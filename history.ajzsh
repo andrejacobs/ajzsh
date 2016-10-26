@@ -1,0 +1,10 @@
+# ajzsh
+# Command line history
+# See options.ajzsh for more options controlling how the history works.
+
+# Save command line history to the following path
+HISTFILE=~/.zsh_history
+
+# The number of history lines to be kept.
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE

@@ -1,0 +1,24 @@
+# ajzsh
+# Extras for my own machine and configuration overrides
+
+# Paths -----------------------------------------------------------------------
+
+# General scripts directory
+if [ -d $HOME/scripts ]; then
+	TMP_PATH+=":$HOME/scripts"
+fi
+
+# Local super user binaries
+if [ -d /usr/local/sbin ]; then
+	TMP_PATH+=':/usr/local/sbin'
+fi
+
+# Append extra paths
+if ! [ -z "$TMP_PATH" ]; then
+	TMP_PATH=${TMP_PATH#:}
+	export PATH=$PATH:$TMP_PATH
+fi
+
+# Aliases ---------------------------------------------------------------------
+
+alias cdderived="cd ~/Library/Developer/Xcode/DerivedData/"

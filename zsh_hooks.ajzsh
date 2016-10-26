@@ -1,0 +1,28 @@
+# ajzsh
+# Hooks into the z shell api
+# Reference: http://zsh.sourceforge.net/Doc/Release/Functions.html
+
+## Executed whenever the current working directory is changed
+# function chpwd
+# {
+# 	echo "chpwd"
+# }
+
+## Executed before each prompt is displayed
+# function precmd
+# {
+# 	echo "precmd"
+# }
+
+## Executed just after a command has been read and is about to be executed
+# function preexec
+# {
+# 	echo "preexec"
+# }
+
+## Executed at the point where the main shell is about to exit normally
+# function zshexit
+# {
+# 	echo "zshexit"
+# 	sleep 5
+# }

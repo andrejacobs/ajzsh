@@ -1,0 +1,34 @@
+# ajzsh
+# Configure Z Shell environment
+
+# Check that ~/.ajzsh exists
+if ! [ -d ~/.ajzsh ]; then
+	>&2 echo 'The directory ~/.ajzsh does not exist and thus ajzsh can not be configured'
+	return 1
+fi
+
+# Determine path variables
+pushd ./ > /dev/null
+cd ~/.ajzsh
+export AJZSH_DIR=`pwd`
+export AJZSH_UTILS_DIR="${AJZSH_DIR}/utils"
+popd > /dev/null
+
+# Configure zsh
+source ${AJZSH_DIR}/colours.ajzsh
+source ${AJZSH_DIR}/options.ajzsh
+source ${AJZSH_DIR}/exports.ajzsh
+source ${AJZSH_DIR}/prompt.ajzsh
+# source ${AJZSH_DIR}/completion.ajzsh
+source ${AJZSH_DIR}/aliases.ajzsh
+source ${AJZSH_DIR}/keybindings.ajzsh
+source ${AJZSH_DIR}/functions.ajzsh
+source ${AJZSH_DIR}/history.ajzsh
+source ${AJZSH_DIR}/zsh_hooks.ajzsh
+
+# Load extra customisations
+if [ -d ${AJZSH_DIR}/extras ]; then
+	for script in ${AJZSH_DIR}/extras/*.ajzsh; do
+		source ${script}
+	done
+fi

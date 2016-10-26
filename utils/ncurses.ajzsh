@@ -1,0 +1,9 @@
+# ajzsh
+# Utility functions for working with ncurses
+
+# Print a horizontal line to stdout
+function ajzsh_horizontal_line()
+{
+	COLUMNS=$(tput cols)
+	printf "%${COLUMNS}s\n" | tr " " "-"
+}

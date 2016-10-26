@@ -1,0 +1,18 @@
+# ajzsh
+# Set and export variables
+
+# Enable color in grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;97;45' # Bold white on magenta background
+
+# This resolves issues while installing extra software with native non universal binary extensions
+export ARCHFLAGS='-arch x86_64'
+
+# Extra options for 'less': case insensitive search, keep control characters (like colour)
+export LESS='--ignore-case --raw-control-chars'
+
+# Text editor
+export EDITOR='vim'
+
+# CTAGS Sorting in VIM/Emacs is better behaved with this in place
+export LC_COLLATE=C

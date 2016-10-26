@@ -1,0 +1,10 @@
+# ajzsh
+# Command aliases
+
+# File listing ----------------------------------------------------------------
+
+# While listing files: add colour, show type of file, and print sizes in human readable format
+alias ls='ls -GFh'
+
+# Same as above, but in long listing format and display all files (including hidden ones)
+alias ll='ls -GFhla'

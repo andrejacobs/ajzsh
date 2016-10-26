@@ -1,0 +1,43 @@
+# ajzsh
+# Key bindings
+
+# Handy tip: To get the short cut code to use
+# cat > /dev/null
+# And then enter the key combo
+# Ctrl+c to exit
+
+# General ---------------------------------------------------------------------
+
+# Clear the command line (Ctrl+k)
+bindkey "^K" kill-whole-line
+
+# Search the history (Ctrl+r)
+bindkey "^R" history-incremental-search-backward
+
+# Replace command line by moving backwards through the history (up arrow)
+bindkey "[A" history-search-backward
+
+# Replace command line by moving forwards through the history (down arrow)
+bindkey "[B" history-search-forward
+
+# Cursor ----------------------------------------------------------------------
+
+# Delete the character at the cursor position (Ctrl+d)
+bindkey "^D" delete-char
+
+# Move the cursor forward (Ctrl+f)
+bindkey "^F" forward-char
+
+# Move the cursor backward (Ctrl+b)
+bindkey "^B" backward-char
+
+# Move the cursor to the beginning of the line (Ctrl+a)
+bindkey "^A" beginning-of-line
+
+# Move the cursor to the end of the line (Ctrl+e)
+bindkey "^E" end-of-line
+
+
+
+# Use emacs bindings for the command line, regardless of which EDITOR is set.
+bindkey -e
