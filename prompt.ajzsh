@@ -1,2 +1,25 @@
 # ajzsh
 # Configure command line prompt
+# Reference: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+
+# Exit status code for the last executed command
+local exitCode="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+
+# Setup the Username@Host and prompt values based on whether the user has sudo privilege
+if [[ $(id -u) -eq 0 ]]; then
+	local userHost='%{$terminfo[bold]$fg[red]%}%n@%m%{$reset_color%}'
+	local promptSymbol='#'
+else
+	local userHost='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
+	local promptSymbol='$'
+fi
+
+# Current directory
+local currentDir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
+
+# Set the prompt to be split over 2 lines: first line contains information and the second line is for user input
+PROMPT="╭─${userHost} ${currentDir}
+╰─%B${promptSymbol}%b "
+
+# Set the right hand side of the prompt to display the exit status code if an error occurred
+RPS1="%B${exitCode}%b"
