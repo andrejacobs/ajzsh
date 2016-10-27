@@ -17,9 +17,12 @@ fi
 # Current directory
 local currentDir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
 
+local dateTime='%b%*'
+
 # Set the prompt to be split over 2 lines: first line contains information and the second line is for user input
 PROMPT="╭─${userHost} ${currentDir}
 ╰─%B${promptSymbol}%b "
 
 # Set the right hand side of the prompt to display the exit status code if an error occurred
-RPS1="%B${exitCode}%b"
+# and align the rprompt to be on the same line as prompt
+RPS1="%{$(echotc UP 1)%}%B${exitCode}%b ${dateTime}%b%{$(echotc DO 1)%}"
