@@ -1,0 +1,15 @@
+# ajzsh
+# Display the banner for ajzsh
+
+autoload colors && colors
+
+function ajzsh_banner()
+{
+	printf "$fg_bold[magenta]                 _ $fg_bold[green]    ______   _____   _    _ \n"
+	printf "$fg_bold[magenta]    /\\          | | $fg_bold[green]  |___  /  / ____| | |  | |\n"
+	printf "$fg_bold[magenta]   /  \\         | | $fg_bold[green]     / /  | (___   | |__| |\n"
+	printf "$fg_bold[magenta]  / /\\ \\    _   | | $fg_bold[green]    / /    \\___ \\  |  __  |\n"
+	printf "$fg_bold[magenta] / ____ \\  | |__| | $fg_bold[green]   / /__   ____) | | |  | |\n"
+	printf "$fg_bold[magenta]/_/    \\_\\  \\____/ $fg_bold[green]   /_____| |_____/  |_|  |_|\n"
+	printf "${reset_color}"
+}
