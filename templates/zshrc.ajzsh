@@ -19,8 +19,9 @@ source ${AJZSH_DIR}/platform.ajzsh
 source ${AJZSH_DIR}/colours.ajzsh
 source ${AJZSH_DIR}/options.ajzsh
 source ${AJZSH_DIR}/exports.ajzsh
+source ${AJZSH_DIR}/scm/git.ajzsh
 source ${AJZSH_DIR}/prompt.ajzsh
-# source ${AJZSH_DIR}/completion.ajzsh
+source ${AJZSH_DIR}/completion.ajzsh
 source ${AJZSH_DIR}/aliases.ajzsh
 source ${AJZSH_DIR}/keybindings.ajzsh
 source ${AJZSH_DIR}/functions.ajzsh

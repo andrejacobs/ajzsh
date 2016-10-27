@@ -30,8 +30,11 @@ local currentDir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 # Time
 local dateTime='%b[%*]'
 
+# SCM info
+local scmInfo='$(ajzsh_git_prompt)'
+
 # Set the prompt to be split over 2 lines: first line contains information and the second line is for user input
-PROMPT="╭ ${userHost}${currentDir}
+PROMPT="╭ ${userHost}${currentDir}${scmInfo}
 ╰ %B${promptSymbol}%b "
 
 # Set the right hand side of the prompt to display the exit status code if an error occurred

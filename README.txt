@@ -14,6 +14,9 @@ Directories
 extras
 	Custom configuration for my machine and overrides.
 
+scm
+	Scripts for working with source control management systems like git
+
 templates
 	At the moment only zshrc.ajzsh exists and is used during the installation process.
 

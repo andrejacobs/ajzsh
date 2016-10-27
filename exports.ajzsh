@@ -14,5 +14,8 @@ export LESS='--ignore-case --raw-control-chars'
 # Text editor
 export EDITOR='vim'
 
+# Use less as the pager
+export PAGER='less'
+
 # CTAGS Sorting in VIM/Emacs is better behaved with this in place
 export LC_COLLATE=C

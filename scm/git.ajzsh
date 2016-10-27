@@ -1,0 +1,38 @@
+# ajzsh
+# Utilities for working with git
+
+function ajzsh_git_prompt
+{
+	# This will print out: branch status
+	# where branch will be the name of the current branch (e.g. master)
+	# and status will be one of the following
+	# a) nothing, indicates no changes
+	# b) red *, indicates changes to be staged
+	# c) yellow *, indicates staged changes that still need to be committed
+	# d) up arrow, indicates your branch is ahead of the remote branch
+	# e) down arrow, indicates your branch is behind the remote branch
+	# f) up and down arrow, indicates the branch have diverged from the remote (ahead and behind)
+	
+	# Check if in a git repository by getting the current git ref
+	local ref=$(=git symbolic-ref HEAD 2> /dev/null)
+	if [[ -n $ref ]]; then
+		
+		# Determine the repository status
+		local gitStatus="$(=git status 2> /dev/null)"
+		local repoStatus=''
+		if [[ ${gitStatus} =~ "Changes to be committed" ]]; then
+			repoStatus=" %{$fg[yellow]%}★"
+		elif [[ ${gitStatus} =~ "use \"git add" ]]; then
+			repoStatus=" %{$fg[red]%}★"
+		elif [[ ${gitStatus} =~ "branch is ahead" ]]; then
+			repoStatus=" %{$fg[cyan]%}⬆"
+		elif [[ ${gitStatus} =~ "branch is behind" ]]; then
+			repoStatus=" %{$fg[yellow]%}⬇"
+		elif [[ ${gitStatus} =~ "have diverged" ]]; then
+			repoStatus=" %{$fg[red]%}⬇⬆"
+		fi
+		
+		local branch=${ref#refs/heads/}
+		echo " %b[%{$fg_bold[green]%}${branch}${repoStatus}%{$reset_color%}]"
+	fi
+}
