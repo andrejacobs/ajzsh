@@ -2,26 +2,37 @@
 # Configure command line prompt
 # Reference: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 
-# Exit status code for the last executed command
+# Meaning
+# %~ = current path
+# %* = time
+# %n = username
+# %m = hostname
+# %(?..) = conditional %(condition.true.false)
+
+# Exit status code for the last executed command (only if non zero)
 local exitCode="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
-# Setup the Username@Host and prompt values based on whether the user has sudo privilege
-if [[ $(id -u) -eq 0 ]]; then
-	local userHost='%{$terminfo[bold]$fg[red]%}%n@%m%{$reset_color%}'
-	local promptSymbol='#'
+# Is sudo user?
+if [[ ${AJZSH_IS_SUDO} -eq 1 ]]; then
+	local promptSymbol='%{$fg[red]%}#'
 else
-	local userHost='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%}'
 	local promptSymbol='$'
 fi
 
-# Current directory
-local currentDir='%{$terminfo[bold]$fg[blue]%} %~%{$reset_color%}'
+# Only display username@host if in a SSH session
+if [[ ${AJZSH_IS_SSH} -eq 1 ]]; then
+	local userHost='%{$terminfo[bold]$fg[green]%}%n@%m%{$reset_color%} '
+fi
 
-local dateTime='%b%*'
+# Current directory
+local currentDir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
+
+# Time
+local dateTime='%b[%*]'
 
 # Set the prompt to be split over 2 lines: first line contains information and the second line is for user input
-PROMPT="╭─${userHost} ${currentDir}
-╰─%B${promptSymbol}%b "
+PROMPT="╭ ${userHost}${currentDir}
+╰ %B${promptSymbol}%b "
 
 # Set the right hand side of the prompt to display the exit status code if an error occurred
 # and align the rprompt to be on the same line as prompt

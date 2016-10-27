@@ -1,0 +1,34 @@
+# ajzsh
+# Determine the platform and environment of the shell
+
+# Check if this is macOS or Linux
+local UNAME=$(uname)
+
+if [[ ${UNAME} = 'Darwin' ]]; then
+	export AJZSH_IS_MACOS=1
+fi
+
+if [[ ${UNAME} = 'Linux' ]]; then
+	export AJZSH_IS_LINUX=1
+fi
+
+# Check if currently running in a SSH session
+if [[ "$SSH_CONNECTION" != '' ]]; then
+	export AJZSH_IS_SSH=1
+fi
+
+# Check if user has sudo privileges
+if [[ $(id -u) -eq 0 ]]; then
+	export AJZSH_IS_SUDO=1
+fi
+
+# Check if homebrew is available
+if [[ -x `which brew` ]]; then
+	export AJZSH_HAS_BREW=1
+fi
+
+# Check if aptitude is available
+if [[ -x `which apt-get` ]]; then
+	export AJZSH_HAS_APT=1
+fi
+

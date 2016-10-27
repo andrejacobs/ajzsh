@@ -15,6 +15,7 @@ export AJZSH_UTILS_DIR="${AJZSH_DIR}/utils"
 popd > /dev/null
 
 # Configure zsh
+source ${AJZSH_DIR}/platform.ajzsh
 source ${AJZSH_DIR}/colours.ajzsh
 source ${AJZSH_DIR}/options.ajzsh
 source ${AJZSH_DIR}/exports.ajzsh
