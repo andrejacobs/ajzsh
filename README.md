@@ -70,6 +70,24 @@ Other inspirations were:
 
 This have only been tested on macOS Sierra. I will be using this on Ubuntu shortly and I am sure to run into many joys of fixing bugs :-)
 
+### Troubleshooting
+
+	If you get the following (as I get on macOS 10.11)
+		zsh compinit: insecure directories, run compaudit for list.
+		Ignore insecure directories and continue [y] or abort compinit [n]?
+	
+		Choose n and run compaudit to get the list of directories
+			$ compaudit
+				There are insecure directories:
+				/usr/local/share/zsh/site-functions
+				/usr/local/share/zsh 
+		Change permissions
+			$ cd /usr/local/share/
+			$ sudo chmod -R 755 zsh
+			$ sudo chown -R root:staff zsh
+			
+		Relaunch terminal
+
 ### To-do
 
 * Add some aliasses for git
