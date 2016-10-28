@@ -1,6 +1,8 @@
 # ajzsh
 # Configure Z Shell environment
 
+#TODO: Check that this is run from within the zsh
+
 # Check that ~/.ajzsh exists
 if ! [ -d ~/.ajzsh ]; then
 	>&2 echo 'The directory ~/.ajzsh does not exist and thus ajzsh can not be configured'
@@ -11,22 +13,23 @@ fi
 pushd ./ > /dev/null
 cd ~/.ajzsh
 export AJZSH_DIR=`pwd`
+export AJZSH_CORE_DIR="${AJZSH_DIR}/core"
 export AJZSH_UTILS_DIR="${AJZSH_DIR}/utils"
 popd > /dev/null
 
 # Configure zsh
-source ${AJZSH_DIR}/platform.ajzsh
-source ${AJZSH_DIR}/colours.ajzsh
-source ${AJZSH_DIR}/options.ajzsh
-source ${AJZSH_DIR}/exports.ajzsh
+source ${AJZSH_CORE_DIR}/platform.ajzsh
+source ${AJZSH_CORE_DIR}/colours.ajzsh
+source ${AJZSH_CORE_DIR}/options.ajzsh
+source ${AJZSH_CORE_DIR}/exports.ajzsh
 source ${AJZSH_DIR}/scm/git.ajzsh
-source ${AJZSH_DIR}/prompt.ajzsh
-source ${AJZSH_DIR}/completion.ajzsh
-source ${AJZSH_DIR}/aliases.ajzsh
-source ${AJZSH_DIR}/keybindings.ajzsh
-source ${AJZSH_DIR}/functions.ajzsh
-source ${AJZSH_DIR}/history.ajzsh
-source ${AJZSH_DIR}/zsh_hooks.ajzsh
+source ${AJZSH_CORE_DIR}/prompt.ajzsh
+source ${AJZSH_CORE_DIR}/completion.ajzsh
+source ${AJZSH_CORE_DIR}/aliases.ajzsh
+source ${AJZSH_CORE_DIR}/keybindings.ajzsh
+source ${AJZSH_CORE_DIR}/functions.ajzsh
+source ${AJZSH_CORE_DIR}/history.ajzsh
+source ${AJZSH_CORE_DIR}/zsh_hooks.ajzsh
 
 # Load extra customisations
 if [ -d ${AJZSH_DIR}/extras ]; then
