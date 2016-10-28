@@ -1,0 +1,23 @@
+# ajzsh
+# Utility functions for working with the terminal
+
+autoload colors && colors
+
+# Print a horizontal line to stdout
+function ajzsh_horizontalLine()
+{
+	COLUMNS=$(tput cols)
+	printf "%${COLUMNS}s\n" | tr " " "-"
+}
+
+# Ask the user a yes/no question
+function ajzsh_confirmWithUser()
+{	
+	read -q UNUSED\?"$1 ${reset_color}($fg[green][y]es${reset_color} or $fg[red][n]o${reset_color})? "
+	if [[ $? -eq 0 ]]; then
+		echo ''
+		return 0 # User chose Yes
+	fi
+	echo ''
+	return 1 # User chose No
+}
