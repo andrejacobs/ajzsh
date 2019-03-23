@@ -1,6 +1,8 @@
 # ajzsh
 # Extras for my own machine and configuration overrides
 
+#TODO: Write a function that replaces the duplication going on here -d THEPATH and then again THEPATH
+
 # Paths -----------------------------------------------------------------------
 
 # General scripts directory
@@ -13,6 +15,16 @@ if [ -d /usr/local/sbin ]; then
 	TMP_PATH+=':/usr/local/sbin'
 fi
 
+# Python Pip etc
+if [ -d /usr/local/opt/python/libexec/bin ]; then
+	#NOTE: This must be prefixed to PATH otherwise the system Python 2.7 will be used
+	export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+fi
+
+if [ -d $HOME/Library/Python/3.7/bin ]; then
+	TMP_PATH+=":$HOME/Library/Python/3.7/bin"
+fi
+
 # Append extra paths
 if ! [ -z "$TMP_PATH" ]; then
 	TMP_PATH=${TMP_PATH#:}
@@ -21,4 +33,23 @@ fi
 
 # Aliases ---------------------------------------------------------------------
 
+# Xcode DerivedData directory
 alias cdderived="cd ~/Library/Developer/Xcode/DerivedData/"
+alias rmderived="rm -rf ~/Library/Developer/Xcode/DerivedData"
+
+# Git -------------------------------------------------------------------------
+
+alias gs='git status'
+alias gf='git fetch'
+alias gfa='git fetch --all --prune'
+
+# See which branches have been merged
+alias gbm='git branch --merged'
+
+# See which branches have not been merged
+alias gbnm='git branch --no-merged'
+
+# Fully reset a git repo
+alias greset='git reset --hard && git clean -dfx'
+
+alias gdsub='git diff --submodule'
