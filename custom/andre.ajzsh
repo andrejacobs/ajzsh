@@ -1,5 +1,45 @@
 # ajzsh
-# Customisation example to show that this script will be sourced
-# when the user is named andre
+# My own specific configurations
 
-echo "Welcome back $USER!"
+# Paths -----------------------------------------------------------------------
+
+# General scripts directory
+if [ -d $HOME/scripts ]; then
+	TMP_PATH+=":$HOME/scripts"
+fi
+
+# Local super user binaries
+if [ -d /usr/local/sbin ]; then
+	TMP_PATH+=':/usr/local/sbin'
+fi
+
+
+
+
+# Append the extra paths
+if ! [ -z "$TMP_PATH" ]; then
+	TMP_PATH=${TMP_PATH#:}
+	export PATH=$PATH:$TMP_PATH
+fi
+
+# Aliases ---------------------------------------------------------------------
+
+### Xcode
+alias cdderived="cd ~/Library/Developer/Xcode/DerivedData/"
+alias rmderived="rm -rf ~/Library/Developer/Xcode/DerivedData"
+
+### Git
+alias gs='git status'
+alias gf='git fetch'
+alias gfa='git fetch --all --prune'
+
+# See which branches have been merged
+alias gbm='git branch --merged'
+
+# See which branches have not been merged
+alias gbnm='git branch --no-merged'
+
+# Fully reset a git repo
+alias greset='git reset --hard && git clean -dfx'
+
+alias gdsub='git diff --submodule'

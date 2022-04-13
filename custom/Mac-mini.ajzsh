@@ -2,4 +2,4 @@
 # Customisation example to show that this script will be sourced
 # on a host named "Mac-mini"
 
-echo "Hello, my name is $HOST"
+#echo "Hello, my name is $HOST"
