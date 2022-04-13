@@ -2,6 +2,7 @@
 # Configure Z Shell environment
 
 #TODO: Check that this is run from within the zsh
+# https://nesin.io/blog/check-shell-script-running-bash-or-zsh
 
 # Check that ~/.ajzsh exists
 if ! [ -d ~/.ajzsh ]; then
@@ -36,4 +37,14 @@ if [ -d ${AJZSH_DIR}/extras ]; then
 	for script in ${AJZSH_DIR}/extras/*.ajzsh; do
 		source ${script}
 	done
+fi
+
+# Load any customisations that is specific to this host
+if [ -f "${AJZSH_DIR}/custom/${HOST}.ajzsh" ]; then
+	source "${AJZSH_DIR}/custom/${HOST}.ajzsh"
+fi
+
+# Load any customisations that is specific to this user
+if [ -f "${AJZSH_DIR}/custom/${USER}.ajzsh" ]; then
+	source "${AJZSH_DIR}/custom/${USER}.ajzsh"
 fi

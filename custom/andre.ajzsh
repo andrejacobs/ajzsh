@@ -1,0 +1,5 @@
+# ajzsh
+# Customisation example to show that this script will be sourced
+# when the user is named andre
+
+echo "Welcome back $USER!"
