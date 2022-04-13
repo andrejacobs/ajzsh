@@ -1,24 +1,4 @@
 # ajzsh
-# Extras for my own machine and configuration overrides
-
-# Paths -----------------------------------------------------------------------
-
-# General scripts directory
-if [ -d $HOME/scripts ]; then
-	TMP_PATH+=":$HOME/scripts"
-fi
-
-# Local super user binaries
-if [ -d /usr/local/sbin ]; then
-	TMP_PATH+=':/usr/local/sbin'
-fi
-
-# Append extra paths
-if ! [ -z "$TMP_PATH" ]; then
-	TMP_PATH=${TMP_PATH#:}
-	export PATH=$PATH:$TMP_PATH
-fi
-
-# Aliases ---------------------------------------------------------------------
-
-alias cdderived="cd ~/Library/Developer/Xcode/DerivedData/"
+# Place any custom configuration that you want to be sourced on any machine or by any user.
+# To source configuration based on hostname or user, place a file named $HOST.ajzsh and or 
+# $USER.ajzsh in the custom directory.
