@@ -6,5 +6,5 @@
 HISTFILE=~/.zsh_history
 
 # The number of history lines to be kept.
-HISTSIZE=10000
+HISTSIZE=999999999
 SAVEHIST=$HISTSIZE
