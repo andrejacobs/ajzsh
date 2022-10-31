@@ -14,8 +14,9 @@ if [ -d /usr/local/sbin ]; then
 fi
 
 # Go binaries
-# TODO: check if go works and if GOPATH is not empty, then add
-TMP_PATH+=":$(go env GOPATH)/bin"
+if command -v go &> /dev/null; then
+	TMP_PATH+=":$(go env GOPATH)/bin"
+fi
 
 # Append the extra paths
 if ! [ -z "$TMP_PATH" ]; then
