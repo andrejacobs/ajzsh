@@ -13,8 +13,9 @@ if [ -d /usr/local/sbin ]; then
 	TMP_PATH+=':/usr/local/sbin'
 fi
 
-
-
+# Go binaries
+# TODO: check if go works and if GOPATH is not empty, then add
+TMP_PATH+=":$(go env GOPATH)/bin"
 
 # Append the extra paths
 if ! [ -z "$TMP_PATH" ]; then
@@ -43,3 +44,8 @@ alias gbnm='git branch --no-merged'
 alias greset='git reset --hard && git clean -dfx'
 
 alias gdsub='git diff --submodule'
+
+### Project directories
+alias cdajfdb='cd ~/git/Personal/tools/ajfdb'
+alias cdajtweet='cd ~/git/Personal/tools/ajtweet/ajtweet-cli'
+
