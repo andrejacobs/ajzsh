@@ -50,3 +50,7 @@ alias gdsub='git diff --submodule'
 alias cdajfdb='cd ~/git/Personal/tools/ajfdb'
 alias cdajtweet='cd ~/git/Personal/tools/ajtweet/ajtweet-cli'
 
+### Node.js
+alias loadnvm='export NVM_DIR="$HOME/.nvm"; \
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
