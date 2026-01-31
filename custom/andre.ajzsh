@@ -26,9 +26,14 @@ fi
 
 # Aliases ---------------------------------------------------------------------
 
+### Shell tools
+eval "$(zoxide init zsh)"
+alias cd='z'
+alias cdi='zi'
+
 ### Xcode
-alias cdderived="cd ~/Library/Developer/Xcode/DerivedData/"
-alias rmderived="rm -rf ~/Library/Developer/Xcode/DerivedData"
+# alias cdderived="cd ~/Library/Developer/Xcode/DerivedData/"
+# alias rmderived="rm -rf ~/Library/Developer/Xcode/DerivedData"
 
 ### Git
 alias gs='git status'
@@ -44,13 +49,18 @@ alias gbnm='git branch --no-merged'
 # Fully reset a git repo
 alias greset='git reset --hard && git clean -dfx'
 
-alias gdsub='git diff --submodule'
+#alias gdsub='git diff --submodule'
+
+alias gl='git log --graph --decorate -10'
+alias gl1='git log --oneline --graph --decorate -20'
+
+alias gc='git commit -m'
+alias ga='git add .'
 
 ### Project directories
-alias cdajfdb='cd ~/git/Personal/tools/ajfdb'
-alias cdajtweet='cd ~/git/Personal/tools/ajtweet/ajtweet-cli'
+# alias cdexample1='cd ~/git/example'
 
-### Node.js
-alias loadnvm='export NVM_DIR="$HOME/.nvm"; \
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
+
+# GO private repos ------------------------------------------------------------
+# export GOPRIVATE=github.com/andrejacobs/go-collection,github.com/andrejacobs/go-aj
+# export GOPRIVATE=github.com/andrejacobs/repo1,github.com/andrejacobs/repo2
